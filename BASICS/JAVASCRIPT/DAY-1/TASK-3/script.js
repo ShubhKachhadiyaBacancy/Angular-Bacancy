@@ -1,16 +1,3 @@
-//ES6
-// == vs ===
-//var, let, const
-//regular expression
-
-//strings and its method
-//functions
-//arrow functions
-//arrays and its method(map, filter, reduce)
-//loops - for, forEach
-//conditional and ternary operators
-//DOM And DOM manipulation()
-
 function AddTask(){
     var task = document.getElementById("todo-input").value;
     var todoList = document.getElementById("todo-list");
