@@ -50,7 +50,7 @@ document.getElementById("add-data-btn").addEventListener("click", (event) => {
       ],
     },
     {
-      id: 2,
+      id: 3,
       title: "The Beauty of CSS Grid",
       image: "../ASSETS/photo2.jpg",
       content:
@@ -60,16 +60,17 @@ document.getElementById("add-data-btn").addEventListener("click", (event) => {
           username: "Shubh Kachhadiya",
           content: "CSS Grid is indeed a game-changer for layout design.",
         },
-        {
-          username: "Vasu Kansagara",
-          content: "Great examples. Made it very easy to understand.",
-        },
       ],
     },
   ];
 
-  localStorage.setItem("users", JSON.stringify(usersData));
-  localStorage.setItem("blogs", JSON.stringify(blogsData));
+  if(!localStorage.getItem("users")){
+    localStorage.setItem("users", JSON.stringify(usersData));
+  }
+
+  if(!localStorage.getItem("blogs")){
+    localStorage.setItem("blogs", JSON.stringify(blogsData));
+  }
 
   alert("Dummy Data Added.");
 });

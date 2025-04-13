@@ -13,9 +13,9 @@ body {
   height: 100vh;
 }
 
-.login-container {
+.signup-container {
   background-color: #fff;
-  padding: 40px 30px 20px 30px;
+  padding: 40px 30px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -81,20 +81,20 @@ button:hover {
   background-color: #018d22;
 }
 
-.signup-link {
+.login-link {
   margin-top: 20px;
   font-size: 1rem;
   color: #333;
   text-align: center;
 }
 
-.signup-link a {
+.login-link a {
   color: #007bff;
   text-decoration: none;
   font-weight: bold;
 }
 
-.signup-link a:hover {
+.login-link a:hover {
   text-decoration: underline;
 }
 
@@ -103,7 +103,7 @@ button:hover {
     padding: 10px;
   }
 
-  .login-container {
+  .signup-container {
     padding: 20px 15px;
     max-width: 90%;
   }

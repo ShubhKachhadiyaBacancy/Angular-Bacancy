@@ -1,6 +1,6 @@
-document.getElementById("login-form").addEventListener("submit", (event) => {
+document.getElementById("signup-form").addEventListener("submit", (event) => {
   event.preventDefault();
-  Login();
+  SignUp();
 });
 
 function validatePassword(password) {
@@ -14,7 +14,8 @@ function validatePassword(password) {
   }
 }
 
-function Login() {
+function SignUp() {
+  const userName = document.getElementById("username").value.trim();
   const userEmail = document.getElementById("email").value.trim();
   const userPassword = document.getElementById("password").value.trim();
   const error = document.getElementById("error-message");
@@ -26,16 +27,21 @@ function Login() {
   }
 
   const users = JSON.parse(localStorage.getItem("users"));
-  const user = users.find((u) => u.email === userEmail);
+  const usersLength = users.length + 1;
 
-  if (user) {
-    if (user.password !== userPassword) {
-      error.innerText = `Invalid Password`;
-      return;
-    }
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
-    window.location.href = "Dashboard.html";
+  const newUser = {
+    id: usersLength,
+    username: userName,
+    email: userEmail,
+    password: userPassword,
+  };
+
+  if (!users) {
+    localStorage.setItem("users", JSON.stringify(newUser));
   } else {
-    error.innerText = `Invalid Email`;
+    users.push(newUser);
+    localStorage.setItem("users",JSON.stringify(users));
   }
+
+  window.location.href = "Login.html";
 }

@@ -28,7 +28,7 @@ function DisplayBlogs() {
           <div class="comment-count">Comments: ${blog.comments.length}</div>
           <div class="add-comment">
             <textarea placeholder="Add your comment..." rows="5"></textarea>
-            <button onclick="addComment(event, ${
+            <button onclick="AddComment(event, ${
               blog.id
             })">Post Comment</button>
           </div>
@@ -49,6 +49,20 @@ function DisplayBlogs() {
       blogList.appendChild(blogElement);
     });
   }
+}
+
+function AddComment(event, blogId) {
+  const commentText = event.target.previousElementSibling.value.trim();
+  if (!commentText) {
+    alert("Comment cannot be empty!");
+    return;
+  }
+
+  const blog = blogs.find((b) => b.id === blogId);
+  blog.comments.push({ username: loggedInUser.username, content: commentText });
+
+  localStorage.setItem("blogs", JSON.stringify(blogs));
+  window.location.reload();
 }
 
 function EditComment(event, blogId, commentIndex) {
