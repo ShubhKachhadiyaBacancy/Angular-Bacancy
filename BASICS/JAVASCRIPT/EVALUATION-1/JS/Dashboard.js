@@ -15,7 +15,7 @@ function DisplayBlogs() {
   const blogList = document.getElementById("blog-list");
 
   if (!blogs) {
-    console.log("No Blogs Found.");
+    blogList.innerHTML = "<h1>No Blogs Found.</h1>";
     return;
   } else {
     blogs.forEach((blog) => {
@@ -107,4 +107,9 @@ DisplayBlogs();
 document.getElementById("logout-btn").addEventListener("click", (event) => {
   event.preventDefault();
   Logout();
+});
+
+document.getElementById("add-blog").addEventListener("click", (event) => {
+  event.preventDefault();
+  window.location.href = "AddBlog.html";
 });

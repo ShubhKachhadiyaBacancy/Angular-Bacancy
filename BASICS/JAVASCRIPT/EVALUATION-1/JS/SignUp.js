@@ -27,8 +27,9 @@ function SignUp() {
   }
 
   const users = JSON.parse(localStorage.getItem("users"));
-  const usersLength = users.length + 1;
+  const usersLength = users?users.length + 1:1;
 
+  console.log(users);
   const newUser = {
     id: usersLength,
     username: userName,
@@ -37,7 +38,7 @@ function SignUp() {
   };
 
   if (!users) {
-    localStorage.setItem("users", JSON.stringify(newUser));
+    localStorage.setItem("users", JSON.stringify([newUser]));
   } else {
     users.push(newUser);
     localStorage.setItem("users",JSON.stringify(users));

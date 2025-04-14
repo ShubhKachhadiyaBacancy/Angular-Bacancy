@@ -26,6 +26,11 @@ function Login() {
   }
 
   const users = JSON.parse(localStorage.getItem("users"));
+  if (!users) {
+    error.innerText = `No Accounts Found`;
+    return;
+  }
+
   const user = users.find((u) => u.email === userEmail);
 
   if (user) {
