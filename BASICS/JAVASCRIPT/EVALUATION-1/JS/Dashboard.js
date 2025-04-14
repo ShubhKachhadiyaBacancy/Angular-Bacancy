@@ -24,7 +24,7 @@ function DisplayBlogs() {
       blogElement.innerHTML = `
           <h2>${blog.title}</h2>
           <img src="${blog.image}" alt="${blog.title}">
-          <p>${blog.content}</p>
+          <p>${blog.content}</p>  
           <div class="comment-count">Comments: ${blog.comments.length}</div>
           <div class="add-comment">
             <textarea placeholder="Add your comment..." rows="5"></textarea>
@@ -41,6 +41,7 @@ function DisplayBlogs() {
                     <span class="blog-username">${c.username}:</span> 
                     <span class="comment-content">${c.content}</span>
                     <button class="edit-btn" onclick="EditComment(event, ${blog.id}, ${index})">Edit</button>
+                    <button class="delete-btn" onclick="DeleteComment(event, ${blog.id}, ${index})">Delete</button>
                   </p>`
               )
               .join("")}
@@ -66,13 +67,11 @@ function AddComment(event, blogId) {
 }
 
 function EditComment(event, blogId, commentIndex) {
-  console.log(event.target.parentElement);
   const commentElement = event.target.parentElement;
   const contentSpan = commentElement.querySelector(".comment-content");
   const editButton = event.target;
 
   if (editButton.textContent === "Edit") {
-    // Switch to edit mode
     const input = document.createElement("input");
     input.type = "text";
     input.value = contentSpan.textContent;
@@ -80,7 +79,6 @@ function EditComment(event, blogId, commentIndex) {
     contentSpan.replaceWith(input);
     editButton.textContent = "Update";
   } else {
-    // Save updated comment
     const input = commentElement.querySelector(".edit-input");
     const updatedText = input.value.trim();
     if (!updatedText) {
@@ -93,6 +91,13 @@ function EditComment(event, blogId, commentIndex) {
     localStorage.setItem("blogs", JSON.stringify(blogs));
     window.location.reload();
   }
+}
+
+function DeleteComment(event, blogId, commentIndex) {
+  console.log(blogId,commentIndex);
+  blogs[blogId-1].comments.splice(commentIndex,1);
+  localStorage.setItem("blogs", JSON.stringify(blogs));
+  window.location.reload();
 }
 
 function Logout() {
