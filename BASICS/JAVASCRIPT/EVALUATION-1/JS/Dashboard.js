@@ -37,11 +37,11 @@ function DisplayBlogs() {
             ${blog.comments
               .map(
                 (c, index) =>
-                  `<p data-blog-id="${blog.id}" data-comment-index="${index}">
+                  `<p>
                     <span class="blog-username">${c.username}:</span> 
                     <span class="comment-content">${c.content}</span>
                     <button class="edit-btn" onclick="EditComment(event, ${blog.id}, ${index})">Edit</button>
-                    <button class="delete-btn" onclick="DeleteComment(event, ${blog.id}, ${index})">Delete</button>
+                    <button class="delete-btn" onclick="DeleteComment(${blog.id}, ${index})">Delete</button>
                   </p>`
               )
               .join("")}
@@ -93,7 +93,7 @@ function EditComment(event, blogId, commentIndex) {
   }
 }
 
-function DeleteComment(event, blogId, commentIndex) {
+function DeleteComment(blogId, commentIndex) {
   console.log(blogId,commentIndex);
   blogs[blogId-1].comments.splice(commentIndex,1);
   localStorage.setItem("blogs", JSON.stringify(blogs));

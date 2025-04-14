@@ -52,7 +52,7 @@ document.getElementById("add-data-btn").addEventListener("click", (event) => {
     {
       id: 3,
       title: "The Beauty of CSS Grid",
-      image: "../ASSETS/photo2.jpg",
+      image: "../ASSETS/work2.jpg",
       content:
         "Explore the power of CSS Grid for building responsive layouts effortlessly.",
       comments: [
