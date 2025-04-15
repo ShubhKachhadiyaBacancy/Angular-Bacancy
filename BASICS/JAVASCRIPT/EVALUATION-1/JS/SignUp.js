@@ -27,9 +27,14 @@ function SignUp() {
   }
 
   const users = JSON.parse(localStorage.getItem("users"));
-  const usersLength = users?users.length + 1:1;
+  const userExists = users.find((u) => u.email === userEmail);
+  const usersLength = users ? users.length + 1 : 1;
 
-  console.log(users);
+  if (userExists) {
+    error.innerText = "User Already Exists";
+    return;
+  }
+
   const newUser = {
     id: usersLength,
     username: userName,
@@ -41,7 +46,7 @@ function SignUp() {
     localStorage.setItem("users", JSON.stringify([newUser]));
   } else {
     users.push(newUser);
-    localStorage.setItem("users",JSON.stringify(users));
+    localStorage.setItem("users", JSON.stringify(users));
   }
 
   window.location.href = "Login.html";
