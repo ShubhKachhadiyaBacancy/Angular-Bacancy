@@ -1,3 +1,7 @@
+if(localStorage.getItem("loggedInUser")){
+  window.location.href = "Dashboard.html";
+}
+
 document.getElementById("signup-form").addEventListener("submit", (event) => {
   event.preventDefault();
   SignUp();
